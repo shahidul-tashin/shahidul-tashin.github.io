@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Signature element: ROI (region-of-interest) annotation frame,
+   evoking the bracket/crosshair overlays radiology viewers draw
+   when marking a region on a CT scan. */
+.roi-frame {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.roi-frame::before,
+.roi-frame::after {
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-color: hsl(var(--p));
+  opacity: 0.75;
+}
+
+.roi-frame::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.roi-frame::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+.roi-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Subtle scanline texture for hero backdrop */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    hsl(var(--p) / 0.035),
+    hsl(var(--p) / 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
