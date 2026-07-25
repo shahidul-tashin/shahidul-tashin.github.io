@@ -7,31 +7,33 @@ const links = [
   { to: "/research", label: "Research" },
   { to: "/education", label: "Education" },
   { to: "/publications", label: "Publications" },
+  { to: "/travel", label: "Travel" },
+  { to: "/resources", label: "Resources" },
   { to: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   return (
     <div className="sticky top-0 z-50 border-b border-base-300/60 bg-base-100/80 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+      <div className="flex items-center justify-between max-w-5xl px-4 py-3 mx-auto sm:px-6">
         <NavLink
           to="/"
-          className="font-display text-lg font-semibold tracking-tight"
+          className="text-lg font-semibold tracking-tight font-display"
         >
-          <span className="text-primary font-mono text-sm align-middle mr-2">
+          <span className="mr-2 font-mono text-sm align-middle text-primary">
             &gt;_
           </span>
           {profile.shortName}
         </NavLink>
 
-        <div className="hidden gap-1 sm:flex">
+        <div className="hidden gap-0.5 lg:flex">
           {links.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               end={link.to === "/"}
               className={({ isActive }) =>
-                `rounded-btn px-3 py-2 font-mono text-xs uppercase tracking-wide transition-colors ${
+                `rounded-btn px-2.5 py-2 font-mono text-[0.7rem] uppercase tracking-wide transition-colors ${
                   isActive
                     ? "text-primary"
                     : "text-base-content/70 hover:text-base-content"
@@ -45,11 +47,11 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <div className="dropdown dropdown-end sm:hidden">
+          <div className="dropdown dropdown-end lg:hidden">
             <label tabIndex={0} className="btn btn-ghost btn-circle btn-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -64,7 +66,7 @@ export default function Navbar() {
             </label>
             <ul
               tabIndex={0}
-              className="menu dropdown-content menu-sm z-50 mt-3 w-44 rounded-box bg-base-200 p-2 shadow"
+              className="z-50 p-2 mt-3 shadow menu dropdown-content menu-sm w-44 rounded-box bg-base-200"
             >
               {links.map((link) => (
                 <li key={link.to}>

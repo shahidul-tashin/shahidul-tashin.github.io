@@ -1,4 +1,6 @@
 import RoiFrame from "../components/RoiFrame";
+import PipelineFigure from "../components/PipelineFigure";
+import MetricsExplorer from "../components/MetricsExplorer";
 import { profile } from "../data/profile";
 
 export default function Research() {
@@ -66,6 +68,36 @@ export default function Research() {
               </ul>
             </div>
           </div>
+        </RoiFrame>
+      </section>
+
+      {/* Figure: pipeline diagram */}
+      <section className="mt-16">
+        <RoiFrame
+          tag="fig. 02 — pipeline overview"
+          className="rounded-2xl border border-base-300/60 bg-base-200/30"
+        >
+          <PipelineFigure />
+        </RoiFrame>
+      </section>
+
+      {/* Interactive: diagnostic metrics explorer */}
+      <section className="mt-16">
+        <h2 className="font-display text-xl font-semibold">
+          Try it: Diagnostic Metrics Explorer
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm text-base-content/70">
+          A small interactive built to make one point concrete: in medical
+          diagnosis, no single metric tells the whole story. Adjust the
+          confusion matrix below and watch how accuracy can look fine even
+          while recall — the metric that matters most for not missing a
+          cancer case — quietly falls.
+        </p>
+        <RoiFrame
+          tag="fig. 03 — interactive"
+          className="mt-5 rounded-2xl border border-base-300/60 bg-base-200/30"
+        >
+          <MetricsExplorer />
         </RoiFrame>
       </section>
 

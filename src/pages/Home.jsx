@@ -45,8 +45,24 @@ export default function Home() {
         <div className="flex items-center justify-center">
           <RoiFrame tag="fig. 01 — profile" className="w-full">
             <div className="flex aspect-square w-full flex-col items-center justify-center gap-3 rounded-xl bg-base-100/60 p-6 text-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full border border-primary/40 font-display text-2xl font-semibold text-primary">
-                MST
+              {/* Add your photo at src/assets/profile.jpg and this will
+                  show it automatically. Until then, initials are shown. */}
+              <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-primary/40">
+                <img
+                  src="/src/assets/profile.jpg"
+                  alt={profile.name}
+                  className="h-full w-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextElementSibling.style.display = "flex";
+                  }}
+                />
+                <div
+                  className="hidden h-full w-full items-center justify-center font-display text-2xl font-semibold text-primary"
+                  style={{ display: "none" }}
+                >
+                  MST
+                </div>
               </div>
               <p className="font-mono text-xs text-base-content/60">
                 Genetics → Machine Learning
@@ -133,6 +149,40 @@ export default function Home() {
             </p>
           </div>
         ))}
+      </section>
+
+      {/* Beyond the lab */}
+      <section className="mt-16 grid gap-6 sm:grid-cols-2">
+        <Link
+          to="/travel"
+          className="group rounded-xl border border-base-300/60 bg-base-200/30 p-6 transition-colors hover:border-primary/60"
+        >
+          <p className="roi-tag text-secondary">06 — travel log</p>
+          <h3 className="mt-2 font-display text-lg font-semibold">
+            Beyond the lab
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-base-content/75">
+            A few notes from trips outside work and research.
+          </p>
+          <span className="mt-3 inline-block font-mono text-xs text-primary opacity-0 transition-opacity group-hover:opacity-100">
+            see the log →
+          </span>
+        </Link>
+        <Link
+          to="/resources"
+          className="group rounded-xl border border-base-300/60 bg-base-200/30 p-6 transition-colors hover:border-primary/60"
+        >
+          <p className="roi-tag text-secondary">07 — tools</p>
+          <h3 className="mt-2 font-display text-lg font-semibold">
+            Tools &amp; Resources
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-base-content/75">
+            The AI, research, and writing tools I use day to day.
+          </p>
+          <span className="mt-3 inline-block font-mono text-xs text-primary opacity-0 transition-opacity group-hover:opacity-100">
+            browse the list →
+          </span>
+        </Link>
       </section>
     </div>
   );

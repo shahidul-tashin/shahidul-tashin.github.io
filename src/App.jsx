@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Research from "./pages/Research";
 import Education from "./pages/Education";
 import Publications from "./pages/Publications";
+import Travel from "./pages/Travel";
+import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
             <Route path="/research" element={<Research />} />
             <Route path="/education" element={<Education />} />
             <Route path="/publications" element={<Publications />} />
+            <Route path="/travel" element={<Travel />} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
