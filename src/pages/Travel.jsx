@@ -16,11 +16,10 @@ export default function Travel() {
         Travel Log
       </h1>
       <p className="mt-3 max-w-2xl text-base-content/75">
-        A running record of trips outside the lab and the classroom. Edit{" "}
-        <code className="font-mono text-xs text-secondary">
-          src/data/travel.js
+        A running record of trips outside the lab and the classroom.         <code className="font-mono text-xs text-secondary">
+          {/* src/data/travel.js */}
         </code>{" "}
-        to add your own.
+        {/* to add your own. */}
       </p>
 
       <section className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

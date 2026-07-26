@@ -11,9 +11,9 @@ export default function Resources() {
       </h1>
       <p className="mt-3 max-w-2xl text-base-content/75">
         A working list of the tools and sites I rely on for research,
-        machine learning, and academic writing. Edit{" "}
+        machine learning, and academic writing.
         <code className="font-mono text-xs text-secondary">
-          src/data/resources.js
+          {/* src/data/resources.js */}
         </code>{" "}
         to change this list.
       </p>

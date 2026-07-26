@@ -17,9 +17,9 @@ export default function Writings() {
         Writings
       </h1>
       <p className="mt-3 max-w-2xl text-base-content/75">
-        Notes and short essays on AI, machine learning, and science. Edit{" "}
+        Notes and short essays on AI, machine learning, and science. 
         <code className="font-mono text-xs text-secondary">
-          src/data/writings.js
+          
         </code>{" "}
         to add your own — each entry becomes its own page automatically.
       </p>
