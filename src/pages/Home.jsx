@@ -4,7 +4,9 @@ import RoiFrame from "../components/RoiFrame";
 import Reveal from "../components/Reveal";
 import ContactIcons from "../components/ContactIcons";
 import { profile } from "../data/profile";
-import { accentAt } from "../data/accents";
+import { accentAt } from "../data/accents"; 
+
+import proImg from "../assets/profile.jpg"
 
 export default function Home() {
   return (
@@ -35,7 +37,7 @@ export default function Home() {
               {/* Add your photo at src/assets/profile.jpg and this will
                   show it automatically. Until then, initials are shown. */}
               <img
-                src="/src/assets/profile.jpg"
+                src={proImg}
                 alt={profile.name}
                 className="h-full w-full object-cover"
                 onError={(e) => {
