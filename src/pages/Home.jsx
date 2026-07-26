@@ -32,7 +32,7 @@ export default function Home() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-10 flex flex-col items-center text-center"
         >
-          <RoiFrame tag="fig. 01 — profile">
+          <RoiFrame tag="">
             <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-primary/40 shadow-[0_0_0_6px_hsl(var(--p)/0.08)] transition-shadow hover:shadow-[0_0_0_10px_hsl(var(--p)/0.12)] sm:h-32 sm:w-32">
               {/* Add your photo at src/assets/profile.jpg and this will
                   show it automatically. Until then, initials are shown. */}
@@ -54,9 +54,7 @@ export default function Home() {
             </div>
           </RoiFrame>
 
-          <p className="roi-tag mt-4 text-primary">
-            {profile.caseId || "candidate // ai-for-healthcare"}
-          </p>
+          <p className="roi-tag mt-4 text-primary">{profile.caseId || ""}</p>
           <h1 className="gradient-text mt-2 animate-gradient-x font-display text-3xl font-semibold leading-[1.1] sm:text-5xl">
             {profile.name}
           </h1>
@@ -64,9 +62,9 @@ export default function Home() {
             {profile.tagline}
           </p>
           <p className="mt-2 max-w-lg text-xs text-base-content/60 sm:text-sm">
-            Professional Master's in Computer Science, Jahangirnagar
-            University · B.S. &amp; M.Sc. in Genetic Engineering &amp;
-            Biotechnology, University of Dhaka
+            Currently pursuing an M.Sc. in Computer Science at Jahangirnagar
+            University.I have completed B.S. &amp; M.S. in Genetic Engineering &amp;
+            Biotechnology from University of Dhaka 
           </p>
 
           {/* Direct contact — the fastest path for a professor to reach out */}
