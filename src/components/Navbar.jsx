@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { profile } from "../data/profile";
 
@@ -9,40 +10,58 @@ const links = [
   { to: "/publications", label: "Publications" },
   { to: "/travel", label: "Travel" },
   { to: "/resources", label: "Resources" },
+  { to: "/writings", label: "Writings" },
   { to: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
+  const location = useLocation();
+
   return (
-    <div className="sticky top-0 z-50 border-b border-base-300/60 bg-base-100/80 backdrop-blur">
-      <div className="flex items-center justify-between max-w-5xl px-4 py-3 mx-auto sm:px-6">
+    <div className="sticky top-0 z-50 bg-base-100/80 backdrop-blur">
+      <div className="flex justify-end max-w-full py-5 items-center sm:px-6">
         <NavLink
           to="/"
-          className="text-lg font-semibold tracking-tight font-display"
+          className="font-display text-3xl text-emerald-900 mr-5 font-bold tracking-tight"
         >
-          <span className="mr-2 font-mono text-sm align-middle text-primary">
-            &gt;_
+          <span className="text-primary font-mono text-sm align-middle mr-5">
+            
           </span>
           {profile.shortName}
         </NavLink>
 
         <div className="hidden gap-0.5 lg:flex">
-          {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === "/"}
-              className={({ isActive }) =>
-                `rounded-btn px-2.5 py-2 font-mono text-[0.7rem] uppercase tracking-wide transition-colors ${
-                  isActive
-                    ? "text-primary"
-                    : "text-base-content/70 hover:text-base-content"
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {links.map((link) => {
+            const isActive =
+              link.to === "/"
+                ? location.pathname === "/"
+                : location.pathname.startsWith(link.to);
+            return (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
+                className="relative rounded-btn px-2.5 py-2 font-mono text-[0.7rem] uppercase tracking-wide"
+              >
+                <span
+                  className={`relative z-10 transition-colors ${
+                    isActive
+                      ? "text-primary"
+                      : "text-base-content/70 hover:text-base-content"
+                  }`}
+                >
+                  {link.label}
+                </span>
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </NavLink>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-2">
@@ -51,7 +70,7 @@ export default function Navbar() {
             <label tabIndex={0} className="btn btn-ghost btn-circle btn-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
+                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -66,7 +85,7 @@ export default function Navbar() {
             </label>
             <ul
               tabIndex={0}
-              className="z-50 p-2 mt-3 shadow menu dropdown-content menu-sm w-44 rounded-box bg-base-200"
+              className="menu dropdown-content menu-sm z-50 mt-3 w-44 rounded-box bg-base-200 p-2 shadow"
             >
               {links.map((link) => (
                 <li key={link.to}>

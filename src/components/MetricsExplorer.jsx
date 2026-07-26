@@ -50,6 +50,14 @@ export default function MetricsExplorer() {
     return { accuracy, precision, recall, specificity, f1 };
   }, [tp, fp, fn, tn]);
 
+  const barColors = [
+    "hsl(var(--p))",
+    "hsl(var(--a))",
+    "hsl(var(--s))",
+    "hsl(var(--in))",
+    "hsl(var(--su))",
+  ];
+
   const chartData = [
     { name: "Accuracy", value: +(metrics.accuracy * 100).toFixed(1) },
     { name: "Precision", value: +(metrics.precision * 100).toFixed(1) },
@@ -88,12 +96,15 @@ export default function MetricsExplorer() {
             ["Recall", metrics.recall],
             ["Specificity", metrics.specificity],
             ["F1 Score", metrics.f1],
-          ].map(([label, val]) => (
+          ].map(([label, val], i) => (
             <div
               key={label}
-              className="rounded-lg border border-base-300/60 bg-base-100/60 p-3 text-center"
+              className="rounded-lg border border-base-300/60 bg-base-100/60 p-3 text-center transition-transform duration-200 hover:-translate-y-0.5"
             >
-              <p className="font-display text-lg font-semibold text-primary">
+              <p
+                className="font-display text-lg font-semibold"
+                style={{ color: barColors[i % barColors.length] }}
+              >
                 {(val * 100).toFixed(1)}%
               </p>
               <p className="font-mono text-[0.6rem] uppercase tracking-wide text-base-content/50">
@@ -130,9 +141,9 @@ export default function MetricsExplorer() {
                   fontSize: 12,
                 }}
               />
-              <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="value" radius={[4, 4, 0, 0]} isAnimationActive animationDuration={500}>
                 {chartData.map((_, i) => (
-                  <Cell key={i} fill="hsl(var(--p))" />
+                  <Cell key={i} fill={barColors[i % barColors.length]} />
                 ))}
               </Bar>
             </BarChart>

@@ -1,16 +1,17 @@
 export const profile = {
-  name: "Bridging biology and machine learning for medical diagnosis. ",
+  name: "Md. Shahidul Islam Tashin",
   shortName: "Shahidul Islam Tashin",
   tagline: "PhD Applicant — AI for Healthcare",
   focus: ["Medical Imaging", "Explainable AI", "Deep Learning", "Clinical NLP"],
   pitch:
-    "Md. Shahidul Islam Tashin — genetic engineer turned AI researcher, currently completing a Professional Master's in Computer Science while building an explainable AI framework for gallbladder cancer diagnosis.",
+    "I work at the intersection of genetics, medicine, and machine learning — building models that clinicians can actually trust. My current research applies explainable deep learning to CT-based cancer diagnosis, and I'm seeking a PhD where I can push that work further.",
   email: "shahidul.du.geb@gmail.com",
   whatsapp: "+8801572104998",
   links: {
     github: "https://github.com/shahidul-tashin",
     linkedin: "https://www.linkedin.com/in/msi-tashin/",
-    researchgate: "https://www.researchgate.net/profile/Md-Islam-Tashin",
+    researchgate:
+      "https://www.researchgate.net/profile/Md-Islam-Tashin",
   },
   stats: [
     { value: "4.00/4.00", label: "PMSCS CGPA (to date)" },
@@ -32,7 +33,11 @@ export const profile = {
       "Classical ML baselines",
     ],
     data: ["Clinical CT scan images", "Paired radiology reports"],
-    themes: ["Medical imaging", "Explainable AI", "Healthcare AI deployment"],
+    themes: [
+      "Medical imaging",
+      "Explainable AI",
+      "Healthcare AI deployment",
+    ],
   },
   researchInterests: [
     {

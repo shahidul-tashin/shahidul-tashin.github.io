@@ -18,7 +18,7 @@ export default function Footer() {
               href={profile.links.github}
               target="_blank"
               rel="noreferrer"
-              className="link link-hover"
+              className="link link-hover transition-colors hover:text-primary"
             >
               GitHub
             </a>
@@ -26,7 +26,7 @@ export default function Footer() {
               href={profile.links.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="link link-hover"
+              className="link link-hover transition-colors hover:text-primary"
             >
               LinkedIn
             </a>
@@ -34,13 +34,13 @@ export default function Footer() {
               href={profile.links.researchgate}
               target="_blank"
               rel="noreferrer"
-              className="link link-hover"
+              className="link link-hover transition-colors hover:text-primary"
             >
               ResearchGate
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className="link link-hover"
+              className="link link-hover transition-colors hover:text-primary"
             >
               Email
             </a>

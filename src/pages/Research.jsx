@@ -1,4 +1,6 @@
 import RoiFrame from "../components/RoiFrame";
+import Reveal from "../components/Reveal";
+import { accentAt } from "../data/accents";
 import PipelineFigure from "../components/PipelineFigure";
 import MetricsExplorer from "../components/MetricsExplorer";
 import { profile } from "../data/profile";
@@ -19,7 +21,8 @@ export default function Research() {
 
       {/* Featured project */}
       <section className="mt-10">
-        <RoiFrame tag={project.caseId} className="rounded-2xl border border-base-300/60 bg-base-200/30">
+        <Reveal>
+        <RoiFrame tag={project.caseId} className="rounded-2xl border border-base-300/60 bg-base-200/30 transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/5">
           <div className="flex flex-wrap items-center gap-2">
             <span className="badge badge-secondary badge-sm font-mono">
               {project.status}
@@ -69,16 +72,19 @@ export default function Research() {
             </div>
           </div>
         </RoiFrame>
+        </Reveal>
       </section>
 
       {/* Figure: pipeline diagram */}
       <section className="mt-16">
-        <RoiFrame
-          tag="fig. 02 — pipeline overview"
-          className="rounded-2xl border border-base-300/60 bg-base-200/30"
-        >
-          <PipelineFigure />
-        </RoiFrame>
+        <Reveal>
+          <RoiFrame
+            tag="fig. 02 — pipeline overview"
+            className="rounded-2xl border border-base-300/60 bg-base-200/30 transition-shadow duration-300 hover:shadow-lg hover:shadow-secondary/5"
+          >
+            <PipelineFigure />
+          </RoiFrame>
+        </Reveal>
       </section>
 
       {/* Interactive: diagnostic metrics explorer */}
@@ -93,12 +99,14 @@ export default function Research() {
           while recall — the metric that matters most for not missing a
           cancer case — quietly falls.
         </p>
-        <RoiFrame
-          tag="fig. 03 — interactive"
-          className="mt-5 rounded-2xl border border-base-300/60 bg-base-200/30"
-        >
-          <MetricsExplorer />
-        </RoiFrame>
+        <Reveal>
+          <RoiFrame
+            tag="fig. 03 — interactive"
+            className="mt-5 rounded-2xl border border-base-300/60 bg-base-200/30"
+          >
+            <MetricsExplorer />
+          </RoiFrame>
+        </Reveal>
       </section>
 
       {/* Research interests */}
@@ -107,22 +115,24 @@ export default function Research() {
           Research Interests
         </h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
-          {profile.researchInterests.map((item, i) => (
-            <div
-              key={item.title}
-              className="rounded-xl border border-base-300/60 bg-base-200/30 p-5"
-            >
-              <p className="font-mono text-[0.65rem] text-primary">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-1 font-display text-base font-semibold">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-base-content/75">
-                {item.detail}
-              </p>
-            </div>
-          ))}
+          {profile.researchInterests.map((item, i) => {
+            const a = accentAt(i);
+            return (
+              <Reveal key={item.title} delay={i * 0.08}>
+                <div className={`rounded-xl border border-base-300/60 bg-base-200/30 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}>
+                  <p className={`font-mono text-[0.65rem] ${a.text}`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-1 font-display text-base font-semibold">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-base-content/75">
+                    {item.detail}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -131,9 +141,9 @@ export default function Research() {
         <h2 className="font-display text-xl font-semibold">Experience</h2>
         <div className="mt-5 space-y-4">
           {profile.experience.map((e) => (
+            <Reveal key={e.role}>
             <div
-              key={e.role}
-              className="flex flex-col gap-1 rounded-xl border border-base-300/60 bg-base-200/30 p-5 sm:flex-row sm:items-baseline sm:justify-between"
+              className="flex flex-col gap-1 rounded-xl border border-base-300/60 bg-base-200/30 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:items-baseline sm:justify-between"
             >
               <div>
                 <h3 className="font-display text-base font-semibold">
@@ -147,6 +157,7 @@ export default function Research() {
                 {e.period}
               </span>
             </div>
+            </Reveal>
           ))}
         </div>
       </section>

@@ -1,4 +1,6 @@
 import { profile } from "../data/profile";
+import Reveal from "../components/Reveal";
+import { accentAt } from "../data/accents";
 
 const contactItems = [
   {
@@ -41,27 +43,33 @@ export default function Contact() {
       </p>
 
       <section className="mt-10 grid gap-4 sm:grid-cols-2">
-        {contactItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target={item.href.startsWith("mailto") ? undefined : "_blank"}
-            rel="noreferrer"
-            className="group flex items-center justify-between rounded-xl border border-base-300/60 bg-base-200/30 p-5 transition-colors hover:border-primary/60"
-          >
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wide text-base-content/50">
-                {item.label}
-              </p>
-              <p className="mt-1 font-display text-sm font-medium">
-                {item.value}
-              </p>
-            </div>
-            <span className="font-mono text-primary opacity-0 transition-opacity group-hover:opacity-100">
-              →
-            </span>
-          </a>
-        ))}
+        {contactItems.map((item, i) => {
+          const a = accentAt(i);
+          return (
+            <Reveal key={item.label} delay={i * 0.06}>
+              <a
+                href={item.href}
+                target={item.href.startsWith("mailto") ? undefined : "_blank"}
+                rel="noreferrer"
+                className={`group flex items-center justify-between rounded-xl border border-base-300/60 bg-base-200/30 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${a.border}`}
+              >
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-wide text-base-content/50">
+                    {item.label}
+                  </p>
+                  <p className="mt-1 font-display text-sm font-medium">
+                    {item.value}
+                  </p>
+                </div>
+                <span
+                  className={`font-mono opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 ${a.text}`}
+                >
+                  →
+                </span>
+              </a>
+            </Reveal>
+          );
+        })}
       </section>
     </div>
   );

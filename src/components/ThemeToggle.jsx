@@ -24,12 +24,13 @@ export default function ThemeToggle() {
       type="button"
       onClick={() => setTheme(isDark ? "scanLight" : "scanDark")}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="btn btn-ghost btn-circle btn-sm"
+      className="btn btn-ghost btn-circle btn-sm transition-transform duration-300 hover:rotate-12 hover:scale-110 active:scale-95"
     >
       {isDark ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-5 w-5 animate-[spin_0.5s_ease-in-out]"
+          key="moon"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -43,7 +44,8 @@ export default function ThemeToggle() {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-5 w-5 animate-[spin_0.5s_ease-in-out]"
+          key="sun"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

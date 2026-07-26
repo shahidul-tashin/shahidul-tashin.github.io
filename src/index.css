@@ -20,9 +20,17 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
+.roi-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* Signature element: ROI (region-of-interest) annotation frame,
    evoking the bracket/crosshair overlays radiology viewers draw
-   when marking a region on a CT scan. */
+   when marking a region on a CT scan. Corners pulse gently via the
+   `animate-roi-pulse` utility defined in tailwind.config.js. */
 .roi-frame {
   position: relative;
   padding: 1.5rem;
@@ -35,7 +43,6 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   border-color: hsl(var(--p));
-  opacity: 0.75;
 }
 
 .roi-frame::before {
@@ -43,6 +50,7 @@ body {
   left: 0;
   border-top: 2px solid;
   border-left: 2px solid;
+  animation: roiPulse 2.8s ease-in-out infinite;
 }
 
 .roi-frame::after {
@@ -50,13 +58,39 @@ body {
   right: 0;
   border-bottom: 2px solid;
   border-right: 2px solid;
+  animation: roiPulse 2.8s ease-in-out infinite;
+  animation-delay: 1.4s;
 }
 
-.roi-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+@keyframes roiPulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* Gradient text used sparingly for the hero name. Animated via the
+   `animate-gradient-x` utility defined in tailwind.config.js. */
+.gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--p)),
+    hsl(var(--a)) 45%,
+    hsl(var(--s)) 75%,
+    hsl(var(--p))
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Floating ambient blobs behind the hero. Motion via the `animate-float`
+   / `animate-float-slow` utilities defined in tailwind.config.js. */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Subtle scanline texture for hero backdrop */
@@ -71,7 +105,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
